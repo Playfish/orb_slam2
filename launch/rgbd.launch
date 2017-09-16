@@ -1,0 +1,20 @@
+<!-- This launch file will use orb_slam2 rbgd execuable of ROS
+     If you want to use this launch with Roch, following under command:
+  Usage: roslaunch roch_bringup minimal.launch
+         roslaunch roch_bringup sensors.launch 
+         roslaunch orb_slam2 rgbd.launch
+  Notes: Because will use 3d sensor for orb so donnot set ROCH_3D_SENSOR_ENABLE to false.
+-->
+
+<launch>
+  <arg name="camera"  default="camera"/>
+  <arg name="vocabulary_file" default="$(find orb_slam2)/Vocabulary/ORBvoc.txt"/>
+  <arg name="configure_file"  default="$(find orb_slam2)/config/Asus.yaml"/>
+
+  <!-- ORB_SLAM2 RGBD -->
+  <node pkg="orb_slam2" type="rgbd" name="rgbd" output="screen" args="$(arg vocabulary_file) $(arg configure_file)">
+    <remap from="/camera/rgb/image_raw" to="$(arg camera)/rgb/image_raw"/>
+    <remap from="camera/depth_registered/image_raw" to="$(arg camera)/depth_registered/image_raw"/>
+  </node>
+
+</launch>
