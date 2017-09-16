@@ -4,6 +4,16 @@ This Project just contains ros node, inheritance with [ORB_SLAM2](https://github
 
 ## Preparation
 
+### Required
+This project need GCC 4.9 and above.
+
+### GLEW && OpenCV3
+We should install OpenGL for DBoW2 and OpenCV3 for ORBSLAM typeing under command:
+```
+sudo apt-get install libglew-dev ros-indigo-opencv3
+```
+Notes: ORBSLAM2.so depend on OpenCV 3.1, so under line of OpenCV 3.0 need install.
+
 ### Pangolin
 You should install dependency library named ``[Pangolin](https://github.com/stevenlovegrove/Pangolin)``, almost steups you can use following command:
 
